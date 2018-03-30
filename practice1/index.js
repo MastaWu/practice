@@ -57,14 +57,17 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 app.get("/api/contacts", function(req, res) {
+  console.log("Getting all contactsData!");
   res.json(contactsData);
 });
 
 app.post("/api/contacts", function(req, res) {
+  console.log("Adding data to the list: " + req.body.contact);
   contactsData.push(req.body.contact);
 });
 
 app.delete("/api/contacts/:id", function(req, res) {
+  console.log("Removing contact with id: " + req.params.id);
   contactsData.splice(req.params.id, 1);
 });
 
